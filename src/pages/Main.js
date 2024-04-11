@@ -20,9 +20,31 @@ function Main() {
 
   const [money, setMoney] = useState(0);
   
+  var increase_animation_tracker = (x) => {
+    animation_trigger_function(x);
+  }
+
   useEffect(() => {
-    setUpCanvas(canvasRef, containerRef);
+    setUpCanvas(canvasRef, containerRef, increase_animation_tracker);
   }, []);
+
+  useEffect(() => {
+    if (animation_tracker == 1) {
+      continue_animation_function("animate1");
+      setTimeout(() => {
+        continue_animation_function("animate2");
+      }, 150);
+      setTimeout(() => {
+        title_animation_function("fade-up");
+      }, 500);
+      setTimeout(() => {
+        author_animation_function("fade-up");
+      }, 1000);
+      setTimeout(() => {
+        main_page_display_function("none");
+      }, 2000);
+    }
+  }, [animation_tracker])
 
   return (
     <div className="App">
