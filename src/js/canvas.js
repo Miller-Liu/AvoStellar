@@ -1,40 +1,44 @@
 import * as THREE from 'three';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js';
 
-var canvas, container;
+import { Galaxy } from './Objects/Galaxy.js';
+import { InstancedGalaxy } from './Objects/InstancedGalaxy.js';
+
+var canvas, container, renderer, objects, scene, camera;
 
 export function setUpCanvas(canvasRef, containerRef) {
-
+    // Select Canvas
     canvas = canvasRef.current;
     container = containerRef.current;
 
-    const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+    // THREE Renderer initialization
+    renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize(container.clientWidth, container.clientHeight);
 
-    const scene = new THREE.Scene();
+    // THREE Scene
+    scene = new THREE.Scene();
     scene.background = new THREE.Color( 0x050505 );
-    const camera = new THREE.PerspectiveCamera(
-        45,
+
+    // THREE Camera
+    camera = new THREE.PerspectiveCamera(
+        57,
         container.clientWidth / container.clientHeight,
         0.1,
-        1000
+        10000
     );
+    camera.position.set(3700, 3650, 0);
+    camera.lookAt(new THREE.Vector3(0, 500, 0));
 
     // Sets orbit control to move the camera around
     const orbit = new OrbitControls(camera, renderer.domElement);
 
-    // Camera positioning
-    camera.position.set(0, 0, 5);
-    camera.lookAt(new THREE.Vector3(0, 500, 0));
-    orbit.update();
-
     // Sets a 12 by 12 gird helper
-    const gridHelper = new THREE.GridHelper(12, 12);
+    const gridHelper = new THREE.GridHelper(100, 100);
     scene.add(gridHelper);
 
     // Sets the x, y, and z axes with each having a length of 4
-    const axesHelper = new THREE.AxesHelper(4);
+    const axesHelper = new THREE.AxesHelper(100);
     scene.add(axesHelper);
 
     // box
@@ -42,6 +46,8 @@ export function setUpCanvas(canvasRef, containerRef) {
     const boxMaterial = new THREE.MeshBasicMaterial({color: 0x00FF00});
     const box = new THREE.Mesh(boxGeometry, boxMaterial);
     scene.add(box)
+
+    objects = makeObjects();
 
     // animate box
     box.rotation.x = 5;
@@ -53,11 +59,33 @@ export function setUpCanvas(canvasRef, containerRef) {
         renderer.render(scene, camera);
     }
 
-    renderer.setAnimationLoop(animate);
+    renderer.setAnimationLoop(render);
 
     window.addEventListener('resize', function() {
         camera.aspect = container.clientWidth / container.clientHeight;
         renderer.setSize(container.clientWidth, container.clientHeight);
         camera.updateProjectionMatrix();
     });
+}
+
+/*
+-------------------------------------------------------
+MAIN LOOP
+-------------------------------------------------------
+*/
+
+function render() {
+    objects["instanced_galaxy"].update(camera);
+    renderer.render(scene, camera);
+};
+
+/*
+-------------------------------------------------------
+MAKE OBJECTS
+-------------------------------------------------------
+*/
+function makeObjects() {
+    const objs = {};
+    objs["instanced_galaxy"] = new InstancedGalaxy(scene);
+    return objs;
 }

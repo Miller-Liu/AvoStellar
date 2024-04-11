@@ -1,0 +1,25 @@
+
+@font-face {
+    font-family: "CustomFont1";
+    src: url('./Fonts/Sci-fi\ Font1.ttf');
+}
+
+@font-face {
+    font-family: "CustomFont2";
+    src: url('./Fonts/Oasis-BW0JV.ttf');
+}
+
+@font-face {
+    font-family: "CustomFont3";
+    src: url('./Fonts/Exwayer-X3eqa.ttf');
+}
+
+@font-face {
+    font-family: "CustomFont4";
+    src: url('./Fonts/Drexs-51Pp8.ttf');
+}
+
+@font-face {
+    font-family: "CustomFont5";
+    src: url('./Fonts/Aquire-BW0ox.ttf');
+}
