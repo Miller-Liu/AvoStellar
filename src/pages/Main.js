@@ -9,6 +9,8 @@ import { setUpCanvas } from "../js/canvas.js";
 function Main() {
   const canvasRef = useRef()
   const containerRef = useRef()
+  const shopRef = useRef()
+  const mainRef = useRef()
 
   const [animation_tracker, animation_trigger_function] = useState(0);
   const [continue_animation, continue_animation_function] = useState("");
@@ -19,13 +21,19 @@ function Main() {
   const [hud_display, setHUDDisplay] = useState("none");
 
   const [money, setMoney] = useState(0);
+
+  const items = [useRef(), useRef(), useRef(), useRef(), useRef(), useRef(), useRef(), useRef()];
   
   var increase_animation_tracker = (x) => {
     animation_trigger_function(x);
   }
 
+  const increaseMoney = (x) => {
+    setMoney(x);
+  };
+
   useEffect(() => {
-    setUpCanvas(canvasRef, containerRef, increase_animation_tracker);
+    setUpCanvas(canvasRef, containerRef, increase_animation_tracker, increaseMoney, shopRef, mainRef, items);
   }, []);
 
   useEffect(() => {
@@ -43,6 +51,14 @@ function Main() {
       setTimeout(() => {
         main_page_display_function("none");
       }, 2000);
+    }
+    if (animation_tracker == 2) {
+      setHUDDisplay("block");
+      shop_display_function("none");
+    }
+    if (animation_tracker == 3) {
+      setHUDDisplay("none");
+      shop_display_function("flex");
     }
   }, [animation_tracker])
 
@@ -63,25 +79,27 @@ function Main() {
           </div>
       </div>
       <div id="HUD" style={{display: hud_display}}>
-        <div id="coin-counter">Total Currency: {money}</div>
+        <div id="to-shop" ref={shopRef}>Shop</div>
+        <div id="coin-counter1">Total Currency: {money}</div>
       </div>
       <div id="shop-container" style={{display: shop_display}}>
+        <div id="to-main" ref={mainRef}>Back</div>
+        <div id="coin-counter2">Total Currency: {money}</div>
         <div id="shop">
           <div className="column">
-            <div className="item">TEST</div>
-            <div className="item">TEST</div>
-            <div className="item">TEST</div>
-            <div className="item">TEST</div>
+            <div className="item" ref={items[0]}>TEST<br/>Cost: 10 coins</div>
+            <div className="item" ref={items[2]}>TEST<br/>Cost: 50 coins</div>
+            <div className="item" ref={items[4]}>TEST<br/>Cost: 500 coins</div>
+            <div className="item" ref={items[6]}>TEST<br/>Cost: 1,000 coins</div>
           </div>
           <div className="column">
-            <div className="item">TEST</div>
-            <div className="item">TEST</div>
-            <div className="item">TEST</div>
-            <div className="item">TEST</div>
+            <div className="item" ref={items[1]}>TEST<br/>Cost: 20 coins</div>
+            <div className="item" ref={items[3]}>TEST<br/>Cost: 100 coins</div>
+            <div className="item" ref={items[5]}>TEST<br/>Cost: 750 coins</div>
+            <div className="item" ref={items[7]}>TEST<br/>Cost: 10,000 coins</div>
           </div>
         </div>
       </div>
-      <Link to='/shop' style={{ color: 'white', position: 'absolute'}}>TO SHOP</Link>
     </div>
   );
 }
