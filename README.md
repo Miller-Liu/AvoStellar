@@ -22,11 +22,11 @@ Note: this feature is not completed.
 ## Getting Started
 ### 1. Clone the repository
 ```bash
-git clone <repository-url>
+git clone <repository-url> <your-repo-name>
+cd <your-repo-name>
 ```
 ### 2. Install dependencies
 ```bash
-cd your-repo-name
 npm install
 ```
 
