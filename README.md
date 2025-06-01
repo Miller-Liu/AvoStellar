@@ -4,7 +4,7 @@
 ![Supabase](https://img.shields.io/badge/Supabase-181818?style=for-the-badge&logo=supabase&logoColor=white)
 
 <div align="center">
-    <img src="AvoStellar.png" width="500"/>
+    <img src="AvoStellar.png" width="600"/>
     <p style="font-size: 15px">
     AvoStellar is a simple 3D planetary cookie clicker game built with Three.js and React. Click away to earn coins, and use coins to purchase upgrades to generate coins faster :)
     </p>
