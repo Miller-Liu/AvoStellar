@@ -1,0 +1,241 @@
+@import './font.css';
+
+body {
+    user-select: none;
+    margin: 0px;
+    overflow-y: hidden;
+}
+
+#main-page {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+
+    pointer-events: none;
+}
+
+#title-container{
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#title-container > *{
+    color: aliceblue;
+    margin: 0;
+}
+
+#title-container > h2 {
+    font-size: 110px;
+    font-family: CustomFont3;
+    padding-bottom: 15px;
+}
+
+#title-container > h3 {
+    font-size: 22px;
+    font-family: CustomFont1;
+}
+
+#main-canvas-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+#main-canvas {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.fade-up {
+    transition: ease-in 0.5s;
+    transform: translateY(-50%);
+    opacity: 0%;
+}
+
+#continue-text-container {
+    width: 75%;
+    height: fit-content;
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#continue-text-container > h4 {
+    color: white;
+    font-family: CustomFont5;
+    font-size: 22px;
+    width: fit-content;
+}
+
+#continue-text-container > hr {
+    width: 20%;
+}
+
+#continue-text-container.animate1 {
+    transition: linear 0.15s;
+    width: 60%;
+}
+
+#continue-text-container.animate2 {
+    transition: ease-in-out 0.4s;
+    width: 100%;
+    opacity: 0%;
+}
+
+#hud {
+    position: absolute;
+    bottom: 0%;
+    left: 0%;
+    width: 100%;
+    height: 10%;
+    border: 2px white solid;
+    border-radius: 40px;
+    background: #FFF9;
+}
+
+#shop-container {
+    position: absolute;
+    top: 0;
+    left: 40%;
+    width: 60%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+#shop {
+    width: 90%;
+    height: 80%;
+    position: relative;
+    top: 7%;
+    border: 2px white solid;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.column {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.item {
+    width: 90%;
+    height: 10%;
+    background: white;
+    margin: 15px 0 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item:hover {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.5);
+}
+
+#HUD {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+}
+
+#to-shop {
+    transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+    top: 16%;
+    width: 28%;
+    height: 9%;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-family: 'CustomFont4';
+    font-size: 38px;
+    border: 2px white solid;
+    border-radius: 20px;
+}
+
+#to-shop:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+}
+
+#coin-counter1 {
+    transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    width: 50%;
+    height: 10%;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-family: 'CustomFont4';
+    font-size: 30px;
+    border: 2px white solid;
+}
+
+#coin-counter2 {
+    transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    width: 65%;
+    height: 10%;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-family: 'CustomFont4';
+    font-size: 30px;
+    border: 2px white solid;
+}
+
+#to-main {
+    transform: translateX(-50%);
+    position: absolute;
+    left: 50%;
+    top: 5%;
+    width: 50%;
+    height: 9%;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    font-family: 'CustomFont4';
+    font-size: 38px;
+    border: 2px white solid;
+    border-radius: 20px;;
+}
+
+#to-main:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+}
