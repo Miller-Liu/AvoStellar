@@ -15,8 +15,7 @@
 
 - **Planet Clicker Game**: Users can enjoy a relaxing planet clicker game, enabled by [Three.js](https://threejs.org) and [React](https://react.dev).
 - **User Login & Sign Up**: Users are able to login (by going to `/login`) and sign up (by going to `/signup`) by entering their email and a password. Basic authentication is done using [Supabase](https://supabase.com/) and notification UI is done using [React Hot Toast](https://react-hot-toast.com).
-- **Persistent user session**: Remembering users' progress (number of coins).
-<br/>
+- **Persistent user session**: Remembering users' progress (number of coins).  
 Note: this feature is not completed.
 
 ## Getting Started
